@@ -1,0 +1,91 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: 2019-05-13T03:24:15Z
+  generateName: kubia-
+  labels:
+    run: kubia
+  name: kubia-qd4lj
+  namespace: default
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicationController
+    name: kubia
+    uid: 9614b68d-752e-11e9-89ee-d461fe1732f6
+  resourceVersion: "39281336"
+  selfLink: /api/v1/namespaces/default/pods/kubia-qd4lj
+  uid: 9617714f-752e-11e9-89ee-d461fe1732f6
+spec:
+  containers:
+  - image: harborbj01.jcloud.com/iaas/kubia
+    imagePullPolicy: Always
+    name: kubia
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-l2fr8
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  nodeName: a01-r06-i18-44-5002314.jcloud.com
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-l2fr8
+    secret:
+      defaultMode: 420
+      secretName: default-token-l2fr8
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2019-05-13T03:24:15Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2019-05-13T03:24:29Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: null
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: 2019-05-13T03:24:15Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://8b7e3cdb00813178ff5824788959285a935944cda00ae21003e689d781c48c55
+    image: harborbj01.jcloud.com/iaas/kubia:latest
+    imageID: docker-pullable://harborbj01.jcloud.com/iaas/kubia@sha256:81f3defb2cdfc668d9d464fdb4032b8eb4cd89be7b2a59c67d9c611ca0589510
+    lastState: {}
+    name: kubia
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2019-05-13T03:24:28Z
+  hostIP: 172.19.18.44
+  phase: Running
+  podIP: 10.244.2.229
+  qosClass: BestEffort
+  startTime: 2019-05-13T03:24:15Z
